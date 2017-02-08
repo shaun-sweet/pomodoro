@@ -1,0 +1,21 @@
+.app {
+
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+main {
+  padding-top: 10em;
+}
+
+section {
+}
+
+* {
+  margin: 0;
+}
