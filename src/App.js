@@ -52,6 +52,7 @@ class App extends Component {
   render() {
     return (
       <div id='react'>
+      <div id="top-blue-bar"></div>
         <header>
           <h1>Pomodoro Clock</h1>
           <SettingsPanel>

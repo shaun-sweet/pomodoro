@@ -6,6 +6,8 @@
 }
 
 #break-value {
+  display: inline-block;
   margin-left: .5em;
   margin-right: .5em;
+  color: #FFFFFF;
 }
