@@ -29,7 +29,7 @@ class App extends Component {
       timeRemaining: this.state.sessionLength*60
     })
     var countDown = setInterval(function(){
-      if (that.state.timeRemaining.seconds == 0) {
+      if (that.state.timeRemaining.seconds === 0) {
         clearInterval(countDown)
       }
       that.setState({
