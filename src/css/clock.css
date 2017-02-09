@@ -67,10 +67,5 @@
   #timer-countdown {
     font-size: 2em;
   }
-  .break-knob {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  
 }
