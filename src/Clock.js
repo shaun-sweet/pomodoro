@@ -12,10 +12,10 @@ class Clock extends Component {
 
   render() {
     return (
-      <div onClick={()=> console.log('hi')} className="clock">
+      <div onClick={this.props.startTimerCallback} className="clock">
         <div className="timer-info">
-            <span id="timer-header">Session Time Remaining</span>
-            <span id="timer-countdown">20:23</span>
+            <span id="timer-header">{this.props.workOrBreak} Time Remaining</span>
+            <span id="timer-countdown">{this.props.timeRemaining.minutes + ":"+ this.props.timeRemaining.seconds} </span>
         </div>
         <span className="fill"></span>
       </div>

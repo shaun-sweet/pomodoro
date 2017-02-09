@@ -4,19 +4,40 @@ import Clock from './Clock';
 import SettingsPanel from './SettingsPanel';
 import SessionKnob from './SessionKnob';
 import BreakKnob from './BreakKnob';
-import settingsModule from './settingsModule';
+import settingsModule from './modules/settingsModule';
 class App extends Component {
 
   constructor() {
     super();
     this.state = {
+      workOrBreak: "Work",
       sessionLength: 25,
-      breakLength: 5
+      breakLength: 5,
+      timeRemaining: {
+        minutes: "25",
+        seconds: "25"
+      }
     };
     this.decrementSessionLength = settingsModule.decrementSessionLength.bind(this);
     this.incrementSessionLength = settingsModule.incrementSessionLength.bind(this);
     this.decrementBreakLength = settingsModule.decrementBreakLength.bind(this);
     this.incrementBreakLength = settingsModule.incrementBreakLength.bind(this);
+    this.startTimerCallback = this.startTimerCallback.bind(this);
+  }
+
+  startTimerCallback(){
+    var that = this;
+    var countDown = setInterval(function(){
+      if (that.state.timeRemaining.seconds == "0") {
+        clearInterval(countDown)
+      }
+      that.setState({
+        timeRemaining:{
+          minutes: that.state.timeRemaining.minutes,
+          seconds: that.state.timeRemaining.seconds -1
+        }
+      });
+    }, 1000)
   }
 
 
@@ -40,7 +61,13 @@ class App extends Component {
           </SettingsPanel>
         </header>
         <section>
-          <Clock />
+          <Clock
+            startTimerCallback={this.startTimerCallback}
+            timeRemaining={this.state.timeRemaining}
+            workOrBreak={this.state.workOrBreak}
+            sessionTime={this.state.sessionLength}
+            breakTime={this.state.breakLength}
+          />
         </section>
       </div>
     );
