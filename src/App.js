@@ -24,6 +24,11 @@ class App extends Component {
   }
 
   startTimerCallback(){
+    // validation check for if timer is active
+    this.toggleTimerActiveState();
+    if (this.state.timerActive) {
+      return;
+    }
     var that = this;
     this.setState({
       timeRemaining: this.state.sessionLength*60
@@ -78,8 +83,14 @@ class App extends Component {
       seconds = "0"+seconds;
     }
     return minutes+":"+seconds;
-
   }
+
+  toggleTimerActiveState() {
+    this.setState({
+      timerActive: true
+    });
+  }
+
 }
 
 export default App;
