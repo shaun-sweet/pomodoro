@@ -6,9 +6,11 @@ class BreakKnob extends Component {
     return (
       <div className="break-knob">
         <p> Break Length </p>
-        <button> - </button>
-        <span> 5 </span>
-        <button> + </button>
+        <div className="controls">
+          <span onClick={this.props.decrementBreakLength} className="primary-text-color button"> - </span>
+          <span className="primary-text-color" id="break-value"> {this.props.breakLength} </span>
+          <span onClick={this.props.incrementBreakLength} className="primary-text-color button"> + </span>
+        </div>
       </div>
     );
   }

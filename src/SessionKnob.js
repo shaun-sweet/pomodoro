@@ -6,9 +6,9 @@ class SessionKnob extends Component {
     return (
       <div className="session-knob">
         <p> Session length </p>
-        <button> - </button>
-        <span> 25 </span>
-        <button> + </button>
+          <span onClick={this.props.decrementSessionLength} className="primary-text-color button"> - </span>
+          <span className="primary-text-color pulse" id="session-value"> {this.props.sessionLength} </span>
+          <span onClick={this.props.incrementSessionLength} className="primary-text-color button"> + </span>
       </div>
     );
   }

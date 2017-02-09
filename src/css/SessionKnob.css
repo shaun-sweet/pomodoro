@@ -2,4 +2,15 @@
   padding-right: 3em;
   padding-left: 3em;
   text-align: center;
+  font-size: 1.5em;
+}
+
+
+#session-value {
+  display: inline-block;
+  margin-left: .5em;
+  margin-right: .5em;
+}
+#session-value {
+
 }

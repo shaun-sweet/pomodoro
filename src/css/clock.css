@@ -1,7 +1,27 @@
 .clock {
   height: 400px;
   width: 400px;
+  overflow: hidden;
   border-radius: 50%;
-  background-color: red;
+  background-color: white;
   margin: auto;
+  z-index: 1;
+  position: relative;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
+  transition: all 400ms;
+  cursor: pointer;
+}
+
+.clock:hover {
+  transform: scale(1.2);
+}
+
+.fill {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  right: 0;
+  left:0 ;
+  height: 40%;
+  background-color: #4CAF50;
 }

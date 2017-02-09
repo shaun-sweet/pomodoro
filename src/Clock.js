@@ -13,6 +13,7 @@ class Clock extends Component {
   render() {
     return (
       <div className="clock">
+        <span className="fill"></span>
       </div>
     );
   }

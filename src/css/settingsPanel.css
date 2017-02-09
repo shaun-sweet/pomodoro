@@ -1,3 +1,19 @@
 .settingsPanel {
   display: flex;
+  margin-bottom: 1em;
+}
+
+.button {
+  display: inline-block;
+  border: none;
+  background-color: Transparent;
+  cursor: pointer;
+  transition: all 200ms;
+  width: 2em;
+  /*font-size: 2em;*/
+}
+
+
+.button:hover {
+  transform: rotate(360deg);
 }
