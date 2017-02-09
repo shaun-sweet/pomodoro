@@ -9,9 +9,16 @@ class Clock extends Component {
       sessionName: "Work",
       timeRemaining: 1500,
       timerStarted: false,
-      timerActive: false
+      timerActive: false,
+      recentSessionLength: 0,
+      fillHeight: 0
     };
     this.startTimerCountDown = this.startTimerCountDown.bind(this);
+  }
+
+  alertSound(){
+    var a = document.getElementById('alert-sound');
+    a.play();
   }
 
   startTimerCountDown(durationOfTimer){
@@ -24,13 +31,15 @@ class Clock extends Component {
     var that = this;
     this.setState({timeRemaining: durationOfTimer});
     var countDown = setInterval(function(){
+      that.setState({recentSessionLength: durationOfTimer})
       if (that.state.timerActive) {
         that.setState({ timeRemaining: that.state.timeRemaining -1 });
+        that.setState({ fillHeight: that.getFillHeight()})
       }
       if (that.state.timeRemaining === 0) {
+        this.alertSound();
         clearInterval(countDown)
       }
-
     }, 1000)
   }
 
@@ -41,9 +50,13 @@ class Clock extends Component {
             <span id="timer-header">{this.state.sessionName} {this.state.timerStarted ? "Time Remaining" : "Session Length"}</span>
             <span id="timer-countdown">{this.state.timerStarted ? this.prettyTimeFormat(this.state.timeRemaining) : this.prettyTimeFormat(this.props.sessionTime*60)} </span>
         </div>b
-        <span className="fill"></span>
+        <span style={{height: this.state.fillHeight+'%'}} className="fill"></span>
       </div>
     );
+  }
+
+  getFillHeight() {
+      return 100 - (this.state.timeRemaining / this.state.recentSessionLength * 100);
   }
 
   prettyTimeFormat(timeInSeconds) {
@@ -52,6 +65,9 @@ class Clock extends Component {
     minutes = (timeInSeconds - seconds) / 60;
     if (seconds < 10) {
       seconds = "0"+seconds;
+    }
+    if (timeInSeconds < 60) {
+      return seconds;
     }
     return minutes+":"+seconds;
   }

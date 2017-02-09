@@ -5,6 +5,7 @@ import SettingsPanel from './SettingsPanel';
 import SessionKnob from './SessionKnob';
 import BreakKnob from './BreakKnob';
 import settingsModule from './modules/settingsModule';
+import Sound from './Sound';
 class App extends Component {
 
   constructor() {
@@ -46,6 +47,7 @@ class App extends Component {
             breakTime={this.state.breakLength}
           />
         </section>
+        <Sound />
       </div>
     );
   }
