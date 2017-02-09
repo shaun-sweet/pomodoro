@@ -24,10 +24,10 @@ class SessionKnob extends Component {
   render() {
     return (
       <div className="session-knob">
-        <p> Session length </p>
-          <span onClick={()=>{this.pulseAnimation();this.props.decrementSessionLength()}} className="primary-text-color button"> - </span>
+        <p className="session-knob-header"> Session length </p>
+          <span onClick={()=>{this.pulseAnimation();this.props.decrementSessionLength()}} className="session-knob-decrement primary-text-color button"> - </span>
           <span className={this.state.clicked ? "pulse" : ""} id="session-value"> {this.props.sessionLength} </span>
-          <span onClick={()=>{this.pulseAnimation();this.props.incrementSessionLength()}} className="primary-text-color button"> + </span>
+          <span onClick={()=>{this.pulseAnimation();this.props.incrementSessionLength()}} className="primary-text-color button session-knob-increment"> + </span>
       </div>
     );
   }

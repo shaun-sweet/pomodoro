@@ -12,6 +12,7 @@
   cursor: pointer;
 }
 
+
 .timer-info {
   display: flex;
   flex-direction: column;
@@ -48,4 +49,28 @@
   left:0 ;
   height: 80%;
   background-color: #4CAF50;
+}
+
+@media only screen
+  and (min-device-width: 300px)
+  and (max-device-width: 667px)
+  and (orientation: portrait) {
+  .clock {
+    height: 250px;
+    width: 250px;
+  }
+  #timer-header {
+    font-size: 1em;
+    padding-bottom: 3em;
+  }
+
+  #timer-countdown {
+    font-size: 2em;
+  }
+  .break-knob {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

@@ -25,10 +25,10 @@ class BreakKnob extends Component {
     return (
       <div className="break-knob">
         <p> Break Length </p>
-          <span onClick={()=>{this.pulseAnimation();this.props.decrementBreakLength()}} className="primary-text-color button"> - </span>
+          <span onClick={()=>{this.pulseAnimation();this.props.decrementBreakLength()}} className="break-knob-decrement primary-text-color button"> - </span>
           <span className={this.state.clicked ? "pulse" : ""} id="break-value"> {this.props.breakLength} </span>
-          <span onClick={()=>{this.pulseAnimation();this.props.incrementBreakLength()}} className="primary-text-color button"> + </span>
-      
+          <span onClick={()=>{this.pulseAnimation();this.props.incrementBreakLength()}} className="break-knob-increment primary-text-color button"> + </span>
+
       </div>
     );
   }

@@ -14,3 +14,30 @@
 #session-value {
   color: #FFFFFF;
 }
+
+@media only screen
+  and (min-device-width: 300px)
+  and (max-device-width: 667px)
+  and (orientation: portrait) {
+    .session-knob {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-right: 2em;
+      padding-left: 1em;
+      font-size: 1.5em;
+    }
+    .session-knob-header {
+      order: 1;
+    }
+    .session-knob-increment {
+      order: 2;
+    }
+    #session-value {
+      order: 3;
+    }
+    .session-knob-decrement {
+      order: 4;
+    }
+
+}

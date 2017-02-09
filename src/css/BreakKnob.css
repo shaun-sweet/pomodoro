@@ -11,3 +11,35 @@
   margin-right: .5em;
   color: #FFFFFF;
 }
+
+
+@media only screen
+  and (min-device-width: 300px)
+  and (max-device-width: 667px)
+  and (orientation: portrait) {
+    .break-knob {
+      padding-right: 2em;
+      padding-left: 2em;
+      text-align: center;
+      font-size: 1.5em;
+    }
+
+    #break-value {
+      display: inline-block;
+      margin-left: .5em;
+      margin-right: .5em;
+      color: #FFFFFF;
+    }
+    .break-knob-header {
+      order: 1;
+    }
+    .break-knob-increment {
+      order: 2;
+    }
+    #break-value {
+      order: 3;
+    }
+    .break-knob-decrement {
+      order: 4;
+    }
+}
