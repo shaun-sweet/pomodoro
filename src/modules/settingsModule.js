@@ -1,9 +1,8 @@
 exports.decrementSessionLength = function() {
   // doesn't let length go below 1
   if (this.state.sessionLength > 1) {
-    this.setState({
-      sessionLength: this.state.sessionLength - 1
-    });
+    this.setState({sessionLength: this.state.sessionLength - 1});
+    this.setState({timeRemaining: this.state.sessionLength *60});
   }
 }
 

@@ -10,37 +10,13 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      workOrBreak: "Work",
       sessionLength: 25,
       breakLength: 5,
-      timeRemaining: 1500,
-      timerActive: false
     };
     this.decrementSessionLength = settingsModule.decrementSessionLength.bind(this);
     this.incrementSessionLength = settingsModule.incrementSessionLength.bind(this);
     this.decrementBreakLength = settingsModule.decrementBreakLength.bind(this);
     this.incrementBreakLength = settingsModule.incrementBreakLength.bind(this);
-    this.startTimerCallback = this.startTimerCallback.bind(this);
-  }
-
-  startTimerCallback(){
-    // validation check for if timer is active
-    this.toggleTimerActiveState();
-    if (this.state.timerActive) {
-      return;
-    }
-    var that = this;
-    this.setState({
-      timeRemaining: this.state.sessionLength*60
-    })
-    var countDown = setInterval(function(){
-      if (that.state.timeRemaining.seconds === 0) {
-        clearInterval(countDown)
-      }
-      that.setState({
-        timeRemaining: that.state.timeRemaining -1
-      });
-    }, 1000)
   }
 
 
@@ -65,8 +41,6 @@ class App extends Component {
         </header>
         <section>
           <Clock
-            startTimerCallback={this.startTimerCallback}
-            timeRemaining={this.prettyTimeFormat(this.state.timeRemaining)}
             workOrBreak={this.state.workOrBreak}
             sessionTime={this.state.sessionLength}
             breakTime={this.state.breakLength}
@@ -75,21 +49,9 @@ class App extends Component {
       </div>
     );
   }
-  prettyTimeFormat(timeInSeconds) {
-    let minutes, seconds;
-    seconds = timeInSeconds % 60;
-    minutes = (timeInSeconds - seconds) / 60;
-    if (seconds < 10) {
-      seconds = "0"+seconds;
-    }
-    return minutes+":"+seconds;
-  }
 
-  toggleTimerActiveState() {
-    this.setState({
-      timerActive: true
-    });
-  }
+
+
 
 }
 
