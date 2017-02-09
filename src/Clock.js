@@ -15,7 +15,7 @@ class Clock extends Component {
       <div onClick={this.props.startTimerCallback} className="clock">
         <div className="timer-info">
             <span id="timer-header">{this.props.workOrBreak} Time Remaining</span>
-            <span id="timer-countdown">{this.props.timeRemaining.minutes + ":"+ this.props.timeRemaining.seconds} </span>
+            <span id="timer-countdown">{this.props.timeRemaining} </span>
         </div>
         <span className="fill"></span>
       </div>

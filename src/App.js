@@ -13,10 +13,8 @@ class App extends Component {
       workOrBreak: "Work",
       sessionLength: 25,
       breakLength: 5,
-      timeRemaining: {
-        minutes: "25",
-        seconds: "25"
-      }
+      timeRemaining: 25,
+      timerActive: false
     };
     this.decrementSessionLength = settingsModule.decrementSessionLength.bind(this);
     this.incrementSessionLength = settingsModule.incrementSessionLength.bind(this);
@@ -27,15 +25,15 @@ class App extends Component {
 
   startTimerCallback(){
     var that = this;
+    this.setState({
+      timeRemaining: this.state.sessionLength*60
+    })
     var countDown = setInterval(function(){
-      if (that.state.timeRemaining.seconds == "0") {
+      if (that.state.timeRemaining.seconds == 0) {
         clearInterval(countDown)
       }
       that.setState({
-        timeRemaining:{
-          minutes: that.state.timeRemaining.minutes,
-          seconds: that.state.timeRemaining.seconds -1
-        }
+        timeRemaining: that.state.timeRemaining -1
       });
     }, 1000)
   }
