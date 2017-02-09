@@ -12,7 +12,11 @@ class Clock extends Component {
 
   render() {
     return (
-      <div className="clock">
+      <div onClick={()=> console.log('hi')} className="clock">
+        <div className="timer-info">
+            <span id="timer-header">Session Time Remaining</span>
+            <span id="timer-countdown">20:23</span>
+        </div>
         <span className="fill"></span>
       </div>
     );

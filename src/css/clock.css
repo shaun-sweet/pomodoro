@@ -12,6 +12,30 @@
   cursor: pointer;
 }
 
+.timer-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+}
+
+#timer-header {
+  font-size: 1.5em;
+  padding-bottom: 3em;
+}
+
+#timer-countdown {
+  font-size: 3em;
+}
+
+
 .clock:hover {
   transform: scale(1.2);
 }
@@ -22,6 +46,6 @@
   bottom: 0;
   right: 0;
   left:0 ;
-  height: 40%;
+  height: 80%;
   background-color: #4CAF50;
 }

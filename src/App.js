@@ -4,7 +4,7 @@ import Clock from './Clock';
 import SettingsPanel from './SettingsPanel';
 import SessionKnob from './SessionKnob';
 import BreakKnob from './BreakKnob';
-import Footer from './Footer'
+import settingsModule from './settingsModule';
 class App extends Component {
 
   constructor() {
@@ -13,48 +13,19 @@ class App extends Component {
       sessionLength: 25,
       breakLength: 5
     };
-    this.decrementSessionLength = this.decrementSessionLength.bind(this);
-    this.incrementSessionLength = this.incrementSessionLength.bind(this);
-    this.decrementBreakLength = this.decrementBreakLength.bind(this);
-    this.incrementBreakLength = this.incrementBreakLength.bind(this);
+    this.decrementSessionLength = settingsModule.decrementSessionLength.bind(this);
+    this.incrementSessionLength = settingsModule.incrementSessionLength.bind(this);
+    this.decrementBreakLength = settingsModule.decrementBreakLength.bind(this);
+    this.incrementBreakLength = settingsModule.incrementBreakLength.bind(this);
   }
 
-  decrementSessionLength() {
-    // doesn't let length go below 1
-    if (this.state.sessionLength > 1) {
-      this.setState({
-        sessionLength: this.state.sessionLength - 1
-      });
-    }
-  }
-
-  incrementSessionLength() {
-    this.setState({
-      sessionLength: this.state.sessionLength + 1
-    });
-  }
-
-  decrementBreakLength() {
-    // doesn't let length go below 1
-    if (this.state.breakLength > 1) {
-      this.setState({
-        breakLength: this.state.breakLength - 1
-      });
-    }
-  }
-
-  incrementBreakLength() {
-    this.setState({
-      breakLength: this.state.breakLength + 1
-    });
-  }
 
   render() {
     return (
       <div id='react'>
       <div id="top-blue-bar"></div>
         <header>
-          <h1>Pomodoro Clock</h1>
+          <h1 id="title">Pomodoro Clock</h1>
           <SettingsPanel>
             <BreakKnob
               breakLength={this.state.breakLength}
