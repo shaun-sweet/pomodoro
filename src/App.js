@@ -13,7 +13,7 @@ class App extends Component {
       workOrBreak: "Work",
       sessionLength: 25,
       breakLength: 5,
-      timeRemaining: 25,
+      timeRemaining: 1500,
       timerActive: false
     };
     this.decrementSessionLength = settingsModule.decrementSessionLength.bind(this);
@@ -61,7 +61,7 @@ class App extends Component {
         <section>
           <Clock
             startTimerCallback={this.startTimerCallback}
-            timeRemaining={this.state.timeRemaining}
+            timeRemaining={this.prettyTimeFormat(this.state.timeRemaining)}
             workOrBreak={this.state.workOrBreak}
             sessionTime={this.state.sessionLength}
             breakTime={this.state.breakLength}
@@ -69,6 +69,16 @@ class App extends Component {
         </section>
       </div>
     );
+  }
+  prettyTimeFormat(timeInSeconds) {
+    let minutes, seconds;
+    seconds = timeInSeconds % 60;
+    minutes = (timeInSeconds - seconds) / 60;
+    if (seconds < 10) {
+      seconds = "0"+seconds;
+    }
+    return minutes+":"+seconds;
+
   }
 }
 
