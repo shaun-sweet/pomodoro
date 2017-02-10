@@ -51,7 +51,7 @@ class Clock extends Component {
         that.setState({ timeRemaining: that.state.timeRemaining -1 });
         that.setState({ fillHeight: that.getFillHeight()});
       } else if (that.state.timeRemaining <= 0) {
-        // that.alertSound();
+        that.alertSound();
         that.resetState();
         clearInterval(countDown);
       }
