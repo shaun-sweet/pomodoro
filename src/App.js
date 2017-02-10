@@ -11,7 +11,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      sessionLength: 1,
+      sessionLength: 25,
       breakLength: 5,
     };
     this.decrementSessionLength = settingsModule.decrementSessionLength.bind(this);
