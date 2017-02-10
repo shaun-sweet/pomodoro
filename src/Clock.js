@@ -16,6 +16,21 @@ class Clock extends Component {
     this.startTimerCountDown = this.startTimerCountDown.bind(this);
   }
 
+  resetState() {
+    var sessionName;
+    if (this.state.sessionName === "Work") {
+      sessionName = "Break";
+    }else {
+      sessionName = "Work";
+    }
+    this.setState({
+      sessionName: sessionName,
+      timerStarted: false,
+      timerActive: false,
+      fillHeight: 0
+    });
+  }
+
   alertSound(){
     var a = document.getElementById('alert-sound');
     a.play();
@@ -32,28 +47,38 @@ class Clock extends Component {
     this.setState({timeRemaining: durationOfTimer});
     that.setState({recentSessionLength: durationOfTimer})
     var countDown = setInterval(function(){
-      if (that.state.timeRemaining <= 0) {
-        that.alertSound();
-        clearInterval(countDown);
-      }
-      if (that.state.timerActive) {
+      if (that.state.timerActive && that.state.timeRemaining > 0) {
         that.setState({ timeRemaining: that.state.timeRemaining -1 });
         that.setState({ fillHeight: that.getFillHeight()});
+      } else if (that.state.timeRemaining <= 0) {
+        // that.alertSound();
+        that.resetState();
+        clearInterval(countDown);
       }
-
     }, 1000)
   }
 
   render() {
     return (
-      <div onClick={()=>this.startTimerCountDown(this.props.sessionTime*60)} className="clock">
+      <div
+        onClick={this.clockStartCallback.bind(this)}
+        className="clock">
         <div className="timer-info">
             <span id="timer-header">{this.state.sessionName} {this.state.timerStarted ? "Time Remaining" : "Session Length"}</span>
-            <span id="timer-countdown">{this.state.timerStarted ? this.prettyTimeFormat(this.state.timeRemaining) : this.prettyTimeFormat(this.props.sessionTime*60)} </span>
+            <span id="timer-countdown">{this.state.timerStarted ? this.prettyTimeFormat(this.state.timeRemaining) : (this.state.sessionName === "Work") ? this.prettyTimeFormat(this.props.sessionTime*60) : this.prettyTimeFormat(this.props.breakTime*60)} </span>
         </div>b
         <span style={{height: this.state.fillHeight+'%'}} className="fill"></span>
       </div>
     );
+  }
+
+  clockStartCallback() {
+    if (this.state.sessionName === "Work") {
+      this.startTimerCountDown(this.props.sessionTime*60);
+    } else {
+      this.startTimerCountDown(this.props.breakTime*60);
+    }
+
   }
 
   getFillHeight() {
