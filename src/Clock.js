@@ -30,16 +30,17 @@ class Clock extends Component {
 
     var that = this;
     this.setState({timeRemaining: durationOfTimer});
+    that.setState({recentSessionLength: durationOfTimer})
     var countDown = setInterval(function(){
-      that.setState({recentSessionLength: durationOfTimer})
+      if (that.state.timeRemaining <= 0) {
+        that.alertSound();
+        clearInterval(countDown);
+      }
       if (that.state.timerActive) {
         that.setState({ timeRemaining: that.state.timeRemaining -1 });
-        that.setState({ fillHeight: that.getFillHeight()})
+        that.setState({ fillHeight: that.getFillHeight()});
       }
-      if (that.state.timeRemaining === 0) {
-        this.alertSound();
-        clearInterval(countDown)
-      }
+
     }, 1000)
   }
 
